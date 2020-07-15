@@ -1,6 +1,6 @@
 {
-  "name": "react-native-img-cache",
-  "version": "1.6.0",
+  "name": "react-native-xy-img-cache",
+  "version": "1.0.0",
   "description": "CachedImage component for React native",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
@@ -13,10 +13,6 @@
   "files": [
     "build"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wcandillon/react-native-img-cache.git"
-  },
   "keywords": [
     "react",
     "image",
@@ -24,10 +20,6 @@
   ],
   "author": "William Candillon <wcandillon@gmail.com>",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/wcandillon/react-native-img-cache/issues"
-  },
-  "homepage": "https://github.com/wcandillon/react-native-img-cache#readme",
   "devDependencies": {
     "@types/react": "^16.0.5",
     "@types/react-native": "^0.49.2",
