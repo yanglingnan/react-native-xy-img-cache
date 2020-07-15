@@ -4,7 +4,7 @@ import RNFetchBlob from "rn-fetch-blob";
 const SHA1 = require("crypto-js/sha1");
 const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 const FILE_PREFIX = Platform.OS === "ios" ? "" : "file://";
-export class ImageCache {
+export class XYImageCache {
     constructor() {
         this.cache = {};
         this.BASE_DIR = RNFetchBlob.fs.dirs.CacheDir + "/" + 'fileName';
@@ -21,11 +21,11 @@ export class ImageCache {
         }
     }
     static get(fileName) {
-        if (!ImageCache.instance) {
-            ImageCache.instance = new ImageCache();
+        if (!XYImageCache.instance) {
+            XYImageCache.instance = new XYImageCache();
         }
-        ImageCache.instance.BASE_DIR = RNFetchBlob.fs.dirs.CacheDir + "/" + fileName
-        return ImageCache.instance;
+        XYImageCache.instance.BASE_DIR = RNFetchBlob.fs.dirs.CacheDir + "/" + fileName
+        return XYImageCache.instance;
     }
     clear() {
         this.cache = {};
@@ -121,14 +121,14 @@ export class BaseCachedImage extends Component {
     }
     dispose() {
         if (this.uri) {
-            ImageCache.get(this.props.fileName).dispose(this.uri, this.handler);
+            XYImageCache.get(this.props.fileName).dispose(this.uri, this.handler);
         }
     }
     observe(source, mutable,) {
         if (source.uri !== this.uri) {
             this.dispose();
             this.uri = source.uri;
-            ImageCache.get(this.props.fileName).on(source, this.handler, !mutable);
+            XYImageCache.get(this.props.fileName).on(source, this.handler, !mutable);
         }
     }
     getProps() {
@@ -170,7 +170,7 @@ export class BaseCachedImage extends Component {
         this.dispose();
     }
 }
-export class CachedImage extends BaseCachedImage {
+export class XYCachedImage extends BaseCachedImage {
     render() {
         const props = this.getProps();
         if (React.Children.count(this.props.children) > 0) {
