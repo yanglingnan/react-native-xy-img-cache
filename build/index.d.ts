@@ -4,7 +4,7 @@ export declare type CacheHandler = (path: string) => void;
 export interface CachedImageURISource extends ImageURISource {
     uri: string;
 }
-export declare class ImageCache {
+export declare class XYImageCache {
     private getPath;
     private static instance;
     private constructor();
@@ -39,7 +39,7 @@ export declare abstract class BaseCachedImage<P extends CachedImageProps> extend
     componentWillReceiveProps(nextProps: P): void;
     componentWillUnmount(): void;
 }
-export declare class CachedImage extends BaseCachedImage<CachedImageProps> {
+export declare class XYCachedImage extends BaseCachedImage<CachedImageProps> {
     render(): JSX.Element;
 }
 export declare class CachedImageBackground extends BaseCachedImage<CachedImageProps> {

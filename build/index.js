@@ -4,7 +4,7 @@ import RNFetchBlob from "rn-fetch-blob";
 const SHA1 = require("crypto-js/sha1");
 const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 const FILE_PREFIX = Platform.OS === "ios" ? "" : "file://";
-export class XYImageCache {
+export class ImageCache {
     constructor() {
         this.cache = {};
         this.BASE_DIR = RNFetchBlob.fs.dirs.CacheDir + "/" + 'fileName';
@@ -170,7 +170,7 @@ export class BaseCachedImage extends Component {
         this.dispose();
     }
 }
-export class XYCachedImage extends BaseCachedImage {
+export class CachedImage extends BaseCachedImage {
     render() {
         const props = this.getProps();
         if (React.Children.count(this.props.children) > 0) {
